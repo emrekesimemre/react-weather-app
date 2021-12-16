@@ -8,8 +8,8 @@ function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
 
-  const search = (evt) => {
-    if (evt.key === 'Enter') {
+  const search = (e) => {
+    if (e.key === 'Enter') {
       fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
         .then((res) => res.json())
         .then((result) => {
@@ -74,6 +74,8 @@ function App() {
             onKeyPress={search}
           />
         </div>
+        <h1 className='title'>Weather App</h1>
+
         {typeof weather.main != 'undefined' ? (
           <div>
             <div className="location-box">
